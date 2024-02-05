@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* ---------------------ANIMATIONS------------------------ */
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* For the animation, you can use this... */
+
+        /* h1 {
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeInUp 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+
+        h3, h4, h2 {
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeInUp 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            animation-delay: 0.2s;
+        } */
+
+        /* ...or this. */
+        /* Remember to keep one in comments, or they will both run! */
+
+        h1 {
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeInUp 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+        }
+
+        h3 {
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeInUp 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            animation-delay: 0.2s;
+        }
+
+        h4 {
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeInUp 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            animation-delay: 0.4s;
+        }
+
+        h2 {
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeInUp 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            animation-delay: 0.4s;
+        }
+
+        /* ---------------------FONT FACE INITIALIZING------------------------ */
+
+        @font-face {
+            font-family: 'Gyst';
+            src: url('/src/fonts/Gyst-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gyst';
+            src: url('/src/fonts/Gyst-Bold.otf') format('opentype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gyst';
+            src: url('/src/fonts/Gyst-BoldItalic.otf') format('opentype');
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Gyst';
+            src: url('/src/fonts/Gyst-Italic.otf') format('opentype');
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Gyst';
+            src: url('/src/fonts/Gyst-Light.otf') format('opentype');
+            font-weight: lighter;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gyst';
+            src: url('/src/fonts/Gyst-LightItalic.otf') format('opentype');
+            font-weight: lighter;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Gyst';
+            src: url('/src/fonts/Gyst-Medium.otf') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gyst';
+            src: url('/src/fonts/Gyst-MediumItalic.otf') format('opentype');
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: 'Poppins';
+            src: url('/src/fonts/Poppins-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        /* ---------------------STYLES------------------------ */
+
+        h2 {
+            font-family: 'Poppins';
+            font-weight: lighter;
+            font-size: 20px;
+            margin-left: 5vw;
+            margin-top: -20px;
+            width: 50vw;
+        }
+
+        h1 {
+            font-family: 'Gyst';
+            font-weight: bolder;
+            font-size: 90px;
+            margin-left: 5vw;
+        }
+
+        h3 {
+            font-family: 'Gyst';
+            font-weight: medium;
+            font-size: 20px;
+            margin-left: 5vw;
+            margin-top: -60px;
+            margin-bottom: 40px;
+        }
+
+        h4 {
+            font-family: 'Gyst';
+            font-weight: lighter;
+            font-style: italic;
+            font-size: 20px;
+            margin-left: 5vw;
+            margin-top: -20px;
+            margin-bottom: 25px;
+        }
+
+        img {
+            --s: 50px;
+            /* the size on the corner */
+            --t: 5px;
+            /* the thickness of the border */
+            --g: 20px;
+            /* the gap between the border and image */
+
+            padding: calc(var(--g) + var(--t));
+            outline: var(--t) solid #000000;
+            /* the color here */
+            outline-offset: calc(-1*var(--t));
+            mask:
+                conic-gradient(at var(--s) var(--s), #0000 75%, #000 0) 0 0/calc(100% - var(--s)) calc(100% - var(--s)),
+                linear-gradient(#000 0 0) content-box;
+            transition: .4s;
+        }
+
+
+        body {
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        #main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0;
+            flex-direction: row;
+        }
+
+        /* ---------------------SIZE-BASED ADJUSTMENTS------------------------ */
+
+        @media (max-width: 600px) {
+            #main {
+                flex-direction: column;
+            }
+
+            h2 {
+                width: 85vw;
+            }
+
+            img {
+                margin-left: 10vw;
+                margin-top: 5vh;
+            }
+        }
+
+        @media (min-width: 600px) {
+            img:hover {
+                outline-offset: calc(var(--g)/-1);
+            }
+
+            body{
+                overflow-y: hidden;
+            }
+
+            img {
+                margin-top: 22vh;
+                margin-bottom: 20vh;
+                height: 60vh;
+                margin-left: 60px;
+            }
+
+            #main {
+                margin-top: -14vh;
+            }
+
+            #text {
+                margin-top: -20px;
+            }
+        }
+
+                /* ---------------------STYLES THAT NEED OVERRIDING------------------------ */
+
+        img {
+            width: 60%;
+            height: 60%;
+            border-radius: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="text"  class="animate">
+            <h1>Ayaan Grover</h1>
+            <!-- <h3>/a 'ja:n 'groovər/</h3> -->
+
+            <h3>/'uh-yaaan 'grow-vur/</h3>
+
+            <h4>noun</h4>
+            <h2>A 7th-grade student at the Harker School who is passionate about cricket, coding, swimming, and chess.
+                These interests help the "Ayaan" develop physically, intellectually, and creatively as it progresses
+                through middle school and beyond.</h2>
+        </div>
+        <div id="image">
+            <a href="https://bento.me/ayaangrover"><img src="/src/images/IMG_0049.jpg" alt="Ayaan Grover"></a>
+        </div>
+    </div>
+</body>
+
+</html>
