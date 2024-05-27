@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="/offline.manifest">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -272,6 +272,12 @@
             <a href="https://bento.me/ayaangrover"><img src="/src/images/IMG_0327.jpg" alt="Ayaan Grover"></a>
         </div>
     </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+    <script src="service-worker.js"></script>
 </body>
 
 </html>
