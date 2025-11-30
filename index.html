@@ -1,78 +1,481 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ayaan Grover</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- Preload project images -->
+  <link rel="preload" href="/lexicon.png" as="image">
+  <link rel="preload" href="/whisk.png" as="image">
+  <link rel="preload" href="/loop.png" as="image">
+  <link rel="preload" href="/slate.png" as="image">
+  <link rel="preload" href="/sentinel.png" as="image">
+  <link rel="preload" href="/dune.png" as="image">
+
+  <!-- SF Pro Display -->
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
+
+  <!-- Bogart -->
+  <link rel="stylesheet" href="https://api.fontshare.com/css?f[]=bogart@400,500,700&display=swap" />
+
+  <style>
+    /* GLOBAL ------------------------------------------------------------ */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #fff;
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1700px;
+      margin: 0 auto;
+      padding: 0 48px;
+      position: relative;
+    }
+
+    @media (max-width: 900px) {
+      .container { padding: 0 32px; }
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 0 24px; }
+    }
+
+    /* Highlights */
+    .hl { color: #4cdcbb; }
+    .hl2 { color: #6fa888; font-family: "Bogart"; }
+
+    /* Links */
+    a {
+      font-family: 'Bogart', serif;
+      color: #79b4de;
+      text-decoration: none;
+      position: relative;
+      transition: color 0.25s ease;
+    }
+    a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      height: 2px;
+      width: 0%;
+      background: #79b4de;
+      transition: width 0.25s ease;
+    }
+    a:hover::after { width: 100%; }
+
+    .arrow { margin-left: 4px; font-size: 0.7em; }
+
+    /* HERO -------------------------------------------------------------- */
+    .hero-section {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .hero-title {
+      font-size: min(108px, 12vw);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 1500px;
+      margin-bottom: 48px;
+    }
+
+    .hero-desc {
+      font-size: min(34px, 4vw);
+      line-height: 1.25;
+      max-width: 1400px;
+      color: #ddd;
+      font-weight: 300;
+    }
+
+    @media (max-width: 700px) {
+      .hero-title {
+        font-size: 16vw;
+        line-height: 1.1;
+      }
+      .hero-desc {
+        font-size: 22px;
+        line-height: 1.35;
+      }
+    }
+
+    /* PROJECTS ---------------------------------------------------------- */
+    .projects-section {
+      padding: 120px 0 140px 0;
+      margin-top: 40px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+      gap: 40px;
+      width: 100%;
+      overflow-x: hidden;
+      padding-top: 10px;
+    }
+
+    .project-card {
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 22px;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: #333;
+    }
+
+    .project-image {
+      width: 100%;
+      height: 300px;
+      background: #B2B2B2;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media (max-width: 600px) {
+      .project-image { height: 200px; }
+    }
+
+    .project-content {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .project-title {
+      font-family: "Bogart", serif;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .project-title { font-size: 20px; }
+    }
+
+    .tags {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background: #1b1b1b;
+      border: 1px solid #333;
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .project-desc {
+      font-size: 18px;
+      color: #ccc;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .project-links a {
+      display: inline-block;
+      margin-right: 22px;
+      font-size: 18px;
+    }
+
+    /* FOOTER ------------------------------------------------------------ */
+    .footer {
+      padding: 40px 0 60px;
+      text-align: center;
+      color: #888;
+      font-size: 18px;
+      margin-top: 0px;
+    }
+
+    .footer-icons {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      color: #79b4de; /* required for Heroicons to render */
+    }
+
+    .footer-icons .icon {
+      width: 30px;
+      height: 30px;
+      opacity: 0.9;
+      transition: opacity 0.25s ease;
+    }
+
+    .footer-icons .icon:hover {
+      opacity: 1;
+    }
+
+    @media (max-width: 600px) {
+      .footer-icons .icon {
+        width: 26px;
+        height: 26px;
+      }
+    }
+
+    a.expired {
+      color:#ccc;
+      cursor:not-allowed;
+    }
+
+    a.expired::after {
+      display: none;
+    }
+
+    a::after {
+      background: #79b4de;
+    }
+    
+
+  </style>
 </head>
-<body class="dark">
-  <header class="site-header">
-    <div class="container">
-      <div class="header-content">
-        <h1 class="site-title">ayaan grover</h1>
-        <nav class="site-nav">
-          <a href="index.html" class="nav-link active">home</a>
-          <a href="about.html" class="nav-link">about</a>
-          <a href="projects.html" class="nav-link">projects</a>
-          <a href="contact.html" class="nav-link">contact</a>
-        </nav>
+
+<body>
+  <div class="container">
+
+    <!-- HERO -->
+    <div class="hero-section" id="hero">
+      <div class="hero-title">
+        <span class="hl2">Ayaan Grover</span> is a <span class="hl">student</span>,
+        a <span class="hl">developer</span>, and a <span class="hl">scientist</span>.
+      </div>
+
+      <div class="hero-desc">
+        He’s interested in computational systems, data-driven research, and the
+        scientific principles behind how complex structures form and behave.
+        He writes software, studies scientific literature, and builds experiments
+        to ask better questions. He currently studies at
+        <a href="https://www.harker.org/">The Harker School</a>
+        and publishes some of his code on
+        <a href="https://github.com/ayaangrover">GitHub</a>.
       </div>
     </div>
-  </header>
 
-  <main>
-    <div class="container">
-      <div class="space-y-12">
-        <section class="space-y-4">
-          <h2 class="text-3xl font-bold">Hello, I'm Ayaan.</h2>
-          <p class="text-lg leading-relaxed">
-            I'm a student, scientist, and developer focused on building useful yet secure web applications. Welcome to my corner of the
-            internet.
-          </p>
-          <div class="flex gap-4 pt-2">
-            <a href="about.html" class="button">
-              more about me <span class="icon">→</span>
-            </a>
-            <a href="projects.html" class="button">
-              view projects <span class="icon">→</span>
-            </a>
-          </div>
-        </section>
+    <!-- PROJECTS -->
+    <div class="projects-section">
+      <div class="projects-grid">
 
-        <section class="space-y-4">
-          <h2 class="section-title">featured_projects</h2>
-          <div class="grid-2">
-            <a href="waffle.html" class="card">
-              <h3 class="font-bold">waffle</h3>
-              <p class="text-sm text-muted-foreground">a secure ios chat app built with performance in mind</p>
-            </a>
-            <a href="sentinel.html" class="card">
-              <h3 class="font-bold">sentinel</h3>
-              <p class="text-sm text-muted-foreground">a extension and dashbord for teachers to monitor student web activity</p>
-            </a>
-            <a href="whisk.html" class="card">
-              <h3 class="font-bold">whisk</h3>
-              <p class="text-sm text-muted-foreground">a simple, unlimited recipe app with ocr</p>
-            </a>
+        <!-- LEXICON -->
+        <div class="project-card">
+          <img src="/lexicon.png" alt="Lexicon" class="project-image">
+          <div class="project-content">
+            <div class="project-title">Lexicon</div>
+            <div class="tags">
+              <div class="tag">iOS</div>
+              <div class="tag">Swift</div>
+              <div class="tag">Firebase</div>
+            </div>
+            <div class="project-desc">
+              Flashcard app for iOS with fast study flows and a clean interface. TestFlight is no longer available.
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ayaangrover/lexicon" target="_blank">
+                GitHub<span class="arrow">↗</span>
+              </a>
+              <a class="expired" target="_blank">
+                TestFlight<span class="arrow">↗</span>
+              </a>
+            </div>
           </div>
-          <div class="text-right">
-            <a href="projects.html" class="link-with-icon">
-              all projects <span class="icon-small">→</span>
-            </a>
+        </div>
+
+        <!-- WHISK -->
+        <div class="project-card">
+          <img src="/whisk.png" alt="Whisk" class="project-image">
+          <div class="project-content">
+            <div class="project-title">Whisk</div>
+            <div class="tags">
+              <div class="tag">iOS</div>
+              <div class="tag">Swift</div>
+              <div class="tag">SwiftData</div>
+            </div>
+            <div class="project-desc">
+              A recipe organizer app with tagging, search, and clean UI. TestFlight is no longer available.
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ayaangrover/whisk" target="_blank">
+                GitHub<span class="arrow">↗</span>
+              </a>
+              <a class="expired" target="_blank">
+                TestFlight<span class="arrow">↗</span>
+              </a>
+            </div>
           </div>
-        </section>
+        </div>
+
+        <!-- LOOP -->
+        <div class="project-card">
+          <img src="/loop.png" alt="loop" class="project-image">
+          <div class="project-content">
+            <div class="project-title">Loop</div>
+            <div class="tags">
+              <div class="tag">DFPlayer</div>
+              <div class="tag">PCB</div>
+              <div class="tag">KiCad</div>
+            </div>
+            <div class="project-desc">
+              A compact low-cost MP3 player.
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ayaangrover/loop" target="_blank">
+                GitHub<span class="arrow">↗</span>
+              </a>
+              <a href="https://kicanvas.org/?github=https://github.com/ayaangrover/loop/tree/main/pcb" target="_blank">
+                View PCB<span class="arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLATE -->
+        <div class="project-card">
+          <img src="/slate.png" alt="Slate" class="project-image">
+          <div class="project-content">
+            <div class="project-title">Slate</div>
+            <div class="tags">
+              <div class="tag">RP2350</div>
+              <div class="tag">MicroPython</div>
+              <div class="tag">PCB</div>
+            </div>
+            <div class="project-desc">
+              An RP2350-based board for embedded systems experimentation.
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ayaangrover/slate" target="_blank">
+                GitHub<span class="arrow">↗</span>
+              </a>
+              <a href="https://kicanvas.org/?github=https://github.com/ayaangrover/slate/tree/main/slate" target="_blank">
+                View PCB<span class="arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- SENTINEL -->
+        <div class="project-card">
+          <img src="/sentinel.png" alt="sentinel" class="project-image">
+          <div class="project-content">
+            <div class="project-title">Sentinel</div>
+            <div class="tags">
+              <div class="tag">JavaScript</div>
+              <div class="tag">Python</div>
+              <div class="tag">Node.js</div>
+            </div>
+            <div class="project-desc">
+              A Chrome extension + dashboard for tracking Chromebook activity created for schools.
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ayaangrover/sentinel" target="_blank">
+                GitHub<span class="arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- DUNE -->
+        <div class="project-card">
+          <img src="/dune.png" alt="dune" class="project-image" style="background-color: #26497D;">
+          <div class="project-content">
+            <div class="project-title">Dune</div>
+            <div class="tags">
+              <div class="tag">ZMK</div>
+              <div class="tag">BLE</div>
+              <div class="tag">KiCad</div>
+            </div>
+            <div class="project-desc">
+              A custom split wireless mechanical keyboard running ZMK firmware.
+            </div>
+            <div class="project-links">
+              <a href="https://github.com/ayaangrover/dune" target="_blank">
+                GitHub<span class="arrow">↗</span>
+              </a>
+              <a href="https://kicanvas.org/?github=https://github.com/ayaangrover/dune/tree/main/Dune" target="_blank">
+                View PCB<span class="arrow">↗</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>
-        © 2025 Ayaan Grover • Built with &lt;/&gt; 
-      </p>
+    <!-- FOOTER --------------------------------------------------------- -->
+    <div class="footer">
+      © <span id="year"></span> Ayaan Grover
+      <div class="footer-icons">
+
+        <!-- GitHub (Heroicons code-bracket) -->
+        <a href="https://github.com/ayaangrover" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+          </svg>
+        </a>
+
+        <!-- Mail (Heroicons inline SVG) -->
+        <a href="mailto:ayaangrover@gmail.com">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+          </svg>
+        </a>
+
+        <!-- Phone (Heroicons inline SVG) -->
+        <a href="tel:+14088054451">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+          </svg>
+        </a>
+
+      </div>
     </div>
-  </footer>
+
+  </div>
+
+  <!-- JS — Dynamic Hero Padding + Year Update ---------------------------- -->
+  <script>
+    function adjustHeroPadding() {
+      const hero = document.getElementById('hero');
+      const viewportHeight = window.innerHeight;
+
+      hero.style.paddingTop = '0px';
+      hero.style.paddingBottom = '0px';
+
+      const heroHeight = hero.offsetHeight;
+
+      if (heroHeight >= viewportHeight) {
+        hero.style.paddingTop = '40px';
+        hero.style.paddingBottom = '40px';
+        return;
+      }
+
+      const extraSpace = viewportHeight - heroHeight;
+      const pad = extraSpace / 2;
+
+      hero.style.paddingTop = pad + 'px';
+      hero.style.paddingBottom = pad + 'px';
+    }
+
+    window.addEventListener('load', adjustHeroPadding);
+    window.addEventListener('resize', adjustHeroPadding);
+
+    // Auto-update year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
-
