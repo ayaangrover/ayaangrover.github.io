@@ -6,20 +6,133 @@
   <title>Ayaan Grover</title>
 
   <!-- Preload project images -->
-  <link rel="preload" href="/lexicon.png" as="image">
-  <link rel="preload" href="/whisk.png" as="image">
-  <link rel="preload" href="/loop.png" as="image">
-  <link rel="preload" href="/slate.png" as="image">
-  <link rel="preload" href="/sentinel.png" as="image">
-  <link rel="preload" href="/dune.png" as="image">
-
-  <!-- SF Pro Display -->
-  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/sf-pro-display">
-
-  <!-- Bogart -->
-  <link rel="stylesheet" href="https://api.fontshare.com/css?f[]=bogart@400,500,700&display=swap" />
+  <link rel="preload" href="/public/lexicon.png" as="image">
+  <link rel="preload" href="/public/whisk.png" as="image">
+  <link rel="preload" href="/public/loop.png" as="image">
+  <link rel="preload" href="/public/slate.png" as="image">
+  <link rel="preload" href="/public/sentinel.png" as="image">
+  <link rel="preload" href="/public/dune.png" as="image">
 
   <style>
+    /* LOCAL FONTS ---------------------------------------------------- */
+    
+    /* Bogart */
+    @font-face {
+      font-family: 'Bogart';
+      src: url('/public/fonts/bogart/bogart.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    /* SF Pro Display */
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-Ultralight.otf') format('opentype');
+      font-weight: 100;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-UltralightItalic.otf') format('opentype');
+      font-weight: 100;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-Thin.otf') format('opentype');
+      font-weight: 200;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-ThinItalic.otf') format('opentype');
+      font-weight: 200;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-Light.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-LightItalic.otf') format('opentype');
+      font-weight: 300;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-Regular.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-RegularItalic.otf') format('opentype');
+      font-weight: 400;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-MediumItalic.otf') format('opentype');
+      font-weight: 500;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-Semibold.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-SemiboldItalic.otf') format('opentype');
+      font-weight: 600;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-BoldItalic.otf') format('opentype');
+      font-weight: 700;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-Heavy.otf') format('opentype');
+      font-weight: 800;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-HeavyItalic.otf') format('opentype');
+      font-weight: 800;
+      font-style: italic;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-Black.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'SF Pro Display';
+      src: url('/public/fonts/spd/SF-Pro-Display-BlackItalic.otf') format('opentype');
+      font-weight: 900;
+      font-style: italic;
+    }
     /* GLOBAL ------------------------------------------------------------ */
     body {
       margin: 0;
@@ -273,7 +386,7 @@
 
         <!-- LEXICON -->
         <div class="project-card">
-          <img src="/lexicon.png" alt="Lexicon" class="project-image">
+          <img src="/public/lexicon.png" alt="Lexicon" class="project-image">
           <div class="project-content">
             <div class="project-title">Lexicon</div>
             <div class="tags">
@@ -297,7 +410,7 @@
 
         <!-- WHISK -->
         <div class="project-card">
-          <img src="/whisk.png" alt="Whisk" class="project-image">
+          <img src="/public/whisk.png" alt="Whisk" class="project-image">
           <div class="project-content">
             <div class="project-title">Whisk</div>
             <div class="tags">
@@ -321,7 +434,7 @@
 
         <!-- LOOP -->
         <div class="project-card">
-          <img src="/loop.png" alt="loop" class="project-image">
+          <img src="/public/loop.png" alt="loop" class="project-image">
           <div class="project-content">
             <div class="project-title">Loop</div>
             <div class="tags">
@@ -345,7 +458,7 @@
 
         <!-- SLATE -->
         <div class="project-card">
-          <img src="/slate.png" alt="Slate" class="project-image">
+          <img src="/public/slate.png" alt="Slate" class="project-image">
           <div class="project-content">
             <div class="project-title">Slate</div>
             <div class="tags">
@@ -369,7 +482,7 @@
 
         <!-- SENTINEL -->
         <div class="project-card">
-          <img src="/sentinel.png" alt="sentinel" class="project-image">
+          <img src="/public/sentinel.png" alt="sentinel" class="project-image">
           <div class="project-content">
             <div class="project-title">Sentinel</div>
             <div class="tags">
@@ -390,7 +503,7 @@
 
         <!-- DUNE -->
         <div class="project-card">
-          <img src="/dune.png" alt="dune" class="project-image" style="background-color: #26497D;">
+          <img src="/public/dune.png" alt="dune" class="project-image" style="background-color: #26497D;">
           <div class="project-content">
             <div class="project-title">Dune</div>
             <div class="tags">
